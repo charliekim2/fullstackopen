@@ -25,7 +25,7 @@ const Total = (props) => {
   return <p>Number of exercises {total}</p>;
 };
 
-const A = () => {
+const CourseInfo = () => {
   const course = "Half stack development";
   const parts = [
     {
@@ -50,4 +50,4 @@ const A = () => {
   );
 };
 
-export default A;
+export default CourseInfo;
