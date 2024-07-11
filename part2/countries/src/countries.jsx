@@ -39,13 +39,13 @@ const Country = ({ country, weather }) => {
   }
   return (
     <div>
-      <MetaData country={country} />
+      <Data country={country} />
       <Weather weather={weather} />
     </div>
   );
 };
 
-const MetaData = ({ country }) => {
+const Data = ({ country }) => {
   return (
     <div>
       <h2>{country.name.common}</h2>
