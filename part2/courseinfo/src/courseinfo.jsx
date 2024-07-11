@@ -4,7 +4,7 @@ const Header = (props) => {
 
 const Content = (props) => {
   const parts = props.parts.map((part) => (
-    <Part name={part.name} exercise={part.exercise} />
+    <Part name={part.name} exercises={part.exercises} />
   ));
   return <div>{parts}</div>;
 };
@@ -12,42 +12,36 @@ const Content = (props) => {
 const Part = (props) => {
   return (
     <p>
-      {props.name} {props.exercise}
+      {props.name} {props.exercises}
     </p>
   );
 };
 
 const Total = (props) => {
   const total = props.parts.reduce(
-    (accumulator, curr) => accumulator + curr.exercise,
+    (accumulator, curr) => accumulator + curr.exercises,
     0,
   );
-  return <p>Number of exercises {total}</p>;
+  return (
+    <p>
+      <b>Number of exercises {total}</b>
+    </p>
+  );
 };
 
-const CourseInfo = () => {
-  const course = "Half stack development";
-  const parts = [
-    {
-      name: "React fundamentals",
-      exercise: 10,
-    },
-    {
-      name: "Using props to pass data",
-      exercise: 7,
-    },
-    {
-      name: "State of a component",
-      exercise: 14,
-    },
-  ];
+const Course = ({ course }) => {
   return (
     <div>
-      <Header course={course} />
-      <Content parts={parts} />
-      <Total parts={parts} />
+      <Header course={course.name} />
+      <Content parts={course.parts} />
+      <Total parts={course.parts} />
     </div>
   );
 };
 
-export default CourseInfo;
+const Courses = ({ courses }) => {
+  const course = courses.map((course) => <Course course={course} />);
+  return <div>{course}</div>;
+};
+
+export default Courses;
